@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анна Новикова - Портреты на заказ | Подарите эмоции, а не вещь</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(120deg, #ffb347 0%, #ff5e62 40%, #6a82fb 80%, #fc5c7d 100%);
+            color: white;
+            padding: 90px 0 130px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header .art-svg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .header .art-svg svg {
+            width: 100%; height: 100%;
+            display: block;
+        }
+        .header .palette-emoji {
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            font-size: 3.5rem;
+            z-index: 3;
+            filter: drop-shadow(0 4px 16px rgba(0,0,0,0.15));
+            animation: floatPalette 4s ease-in-out infinite alternate;
+        }
+        @keyframes floatPalette {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(18px) rotate(10deg); }
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Pacifico', cursive;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 22px;
+            line-height: 1.1;
+            letter-spacing: 1.5px;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            -webkit-text-stroke: 1px #111;
+            text-stroke: 1px #111;
+            -webkit-text-fill-color: #fff;
+            text-fill-color: #fff;
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+            margin-bottom: 44px;
+            opacity: 0.97;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+
+        .paint-brush {
+            display: inline-block;
+            font-size: 2.2rem;
+            margin-left: 10px;
+            vertical-align: middle;
+            animation: brushWiggle 2.5s infinite alternate;
+        }
+        @keyframes brushWiggle {
+            0% { transform: rotate(-10deg) scale(1); }
+            100% { transform: rotate(15deg) scale(1.08); }
+        }
+        /* Анимированные мазки */
+        .paint-stroke {
+            position: absolute;
+            z-index: 2;
+            opacity: 0.7;
+            animation: strokeMove 7s linear infinite;
+        }
+        .paint-stroke.stroke1 {
+            left: 10%; top: 30px; width: 180px; height: 60px;
+            animation-delay: 0s;
+        }
+        .paint-stroke.stroke2 {
+            left: 60%; top: 80px; width: 220px; height: 70px;
+            animation-delay: 2s;
+        }
+        .paint-stroke.stroke3 {
+            left: 35%; top: 120px; width: 140px; height: 50px;
+            animation-delay: 4s;
+        }
+        @keyframes strokeMove {
+            0% { opacity: 0.5; transform: scale(1) translateY(0); }
+            50% { opacity: 1; transform: scale(1.08) translateY(18px); }
+            100% { opacity: 0.5; transform: scale(1) translateY(0); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 30px rgba(238, 90, 36, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(238, 90, 36, 0.6);
+        }
+
+        /* Pain Point Section */
+        .pain-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .pain-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+        }
+
+        .pain-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+            margin: 0 5px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.5rem;
+            margin: 30px 0;
+        }
+
+        .phone-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .phone-link:hover {
+            text-decoration: underline;
+        }
+
+        .urgency-text {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        /* Modal for Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-image {
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Floating Elements */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="header">
+        <span class="palette-emoji">🎨</span>
+        <div class="art-svg">
+            <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#fffbe7" fill-opacity="0.5" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,133.3C840,107,960,85,1080,101.3C1200,117,1320,171,1380,197.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+                <circle cx="200" cy="80" r="40" fill="#ffb347" fill-opacity="0.7">
+                    <animate attributeName="cy" values="80;100;80" dur="4s" repeatCount="indefinite" />
+                </circle>
+                <ellipse cx="1200" cy="120" rx="60" ry="30" fill="#6a82fb" fill-opacity="0.5">
+                    <animate attributeName="rx" values="60;80;60" dur="6s" repeatCount="indefinite" />
+                </ellipse>
+            </svg>
+        </div>
+        <div class="paint-stroke stroke1">
+            <svg width="180" height="60" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,30 Q90,10 170,30 Q90,50 10,30" fill="#ff5e62" fill-opacity="0.5"/>
+            </svg>
+        </div>
+        <div class="paint-stroke stroke2">
+            <svg width="220" height="70" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="110" cy="35" rx="100" ry="20" fill="#fc5c7d" fill-opacity="0.4"/>
+            </svg>
+        </div>
+        <div class="paint-stroke stroke3">
+            <svg width="140" height="50" viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="120" height="30" rx="15" fill="#ffe0e9" fill-opacity="0.5"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1 class="hero-title">Подарите эмоции, а не вещь! <span class="paint-brush">🖌️</span></h1>
+                <p class="hero-subtitle">Уникальный ПОРТРЕТ на заказ — ваш шедевр памяти от профессионального художника</p>
+                <a href="tel:+79529388619" class="cta-button">Заказать портрет сейчас</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Point Section -->
+    <section class="pain-section">
+        <div class="container">
+            <div class="pain-content fade-in-up">
+                <h2 class="section-title">Устали от подарков, которые забываются через неделю?</h2>
+                <p class="pain-text">
+                    <span class="emoji">😔</span> Хотите поразить любимого человека чем-то по-настоящему личным, трогающим до глубины души? 
+                </p>
+                <p class="pain-text">
+                    Представьте его реакцию, когда ваш близкий откроет не просто подарок, а <strong>вечную частичку ваших чувств</strong> — портрет, написанный вручную специально для него. <span class="emoji">✨</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content fade-in-up">
+                <div class="about-text">
+                    <h2 class="section-title">Анна Новикова — Ваш мастер живого искусства</h2>
+                    <p>Меня зовут Анна Новикова, я профессиональный художник-портретист. С 2009 года, после окончания Института искусств НГПУ по специализации "рисунок и живопись", я помогаю людям выражать свою любовь, уважение и память через <strong>живое искусство портрета</strong>.</p>
+                    <p>Кисть дышит жизнью, и эту жизнь я стараюсь добавлять в каждую работу. Каждый портрет — это не просто изображение, а история, эмоция, момент, застывший в вечности...</p>
+                </div>
+                <div class="about-image">
+                    <div>
+                        <div style="font-size: 2rem; margin-bottom: 10px;">🎨</div>
+                        <div>Диплом НГПУ<br>Специализация:<br>Рисунок и живопись<br>2009 год</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 class="section-title" style="text-align: center; color: white;">Почему заказывают именно у меня?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">👁️</div>
+                        <h3 class="benefit-title">Реализм и Душа</h3>
+                        <p>Я создаю не просто изображение, а характер и эмоции вашего близкого человека. Портреты, которые смотрят с холста.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎨</div>
+                        <h3 class="benefit-title">Выбор Техники</h3>
+                        <p>Тонкая графика карандаша, нежная дымка пастели, легкая акварель или сочная глубина классического масла — выбирайте!</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎁</div>
+                        <h3 class="benefit-title">Подарок "Под Ключ"</h3>
+                        <p>От идеи до готового шедевра. Я беру на себя все технические вопросы. Вам нужно только вдохновение и фото.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🖼️</div>
+                        <h3 class="benefit-title">Эксклюзивность</h3>
+                        <p>Это единственный в мире, созданный вручную шедевр, который станет фамильной ценностью через поколения.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 class="section-title" style="text-align: center;">Загляните в мою Галерею!</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 20px;">
+                    Посмотрите, как можно передать взгляд, улыбку, суть человека
+                </p>
+                <div class="gallery-grid" id="gallery">
+                    <!-- Gallery items will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 class="section-title" style="text-align: center;">Как заказать портрет мечты?</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 20px;">
+                    Это проще, чем кажется!
+                </p>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Звонок или Сообщение</h3>
+                        <p>Позвоните мне или напишите по номеру: +7 952 938-86-19</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Обсуждение Идеи</h3>
+                        <p>Расскажите, кого хотите запечатлеть, желаемую технику, размер, сроки. Пришлите фото.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Уточнение Деталей</h3>
+                        <p>Я уточню все нюансы и озвучу точную цену. Все четко и прозрачно. </p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Создание и Получение</h3>
+                        <p>Согласовываю эскиз, создаю портрет, и вы получаете потрясающий результат!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="fade-in-up">
+                <h2 class="section-title" style="color: white;">Не откладывайте эмоции на потом!</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                    Ваши близкие заслуживают подарка, который останется с ними навсегда.
+                </p>
+                <div class="contact-info">
+                    <p><strong>Позвоните прямо сейчас:</strong></p>
+                    <a href="tel:+79529388619" class="phone-link">+7 952 938-86-19</a>
+                </div>
+                <div style="margin: 30px 0;">
+                    <a href="https://wa.me/79529388619" class="cta-button" style="margin-right: 20px;">WhatsApp</a>
+                    <a href="tel:+79529388619" class="cta-button">Позвонить</a>
+                </div>
+                <p style="font-size: 1.1rem; margin: 30px 0;">
+                    <strong>Обсудим ваш уникальный портрет и сделаем невозможное — запечатлеем чувства на холсте!</strong> 🎨
+                </p>
+                <div class="urgency-text">
+                    <p><strong>P.S.</strong> Количество заказов, которые я могу взять в работу одновременно, ограничено для сохранения высокого качества! <strong>Звоните сегодня, чтобы успеть получить шедевр к нужной дате!</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Gallery data - using placeholder images for demo
+        const galleryImages = [
+            { src: './1.jpg', title: 'Портрет 1'},
+            { src: './2.jpg', title: 'Портрет 2'},
+            { src: './3.jpg', title: 'Портрет 3'},
+            { src: './4.jpg', title: 'Портрет 4'},
+            { src: './5.jpg', title: 'Портрет 5'},
+            { src: './6.jpg', title: 'Портрет 6'},
+            { src: './7.jpg', title: 'Портрет 7'},
+            { src: './8.jpg', title: 'Портрет 8'},
+            { src: './9.jpg', title: 'Портрет 9'},
+            { src: './10.jpg', title: 'Портрет 10'},
+            { src: './11.jpg', title: 'Портрет 11'},
+            { src: './12.jpg', title: 'Портрет 12'},
+            { src: './13.jpg', title: 'Портрет 13'},
+            { src: './14.jpg', title: 'Портрет 14'},
+            { src: './15.jpg', title: 'Портрет 15'},
+            { src: './16.jpg', title: 'Портрет 16'},
+            { src: './17.jpg', title: 'Портрет 17'},
+            { src: './18.jpg', title: 'Портрет 18'},
+            { src: './19.jpg', title: 'Портрет 19'},
+            { src: './20.jpg', title: 'Портрет 20'},
+            { src: './21.jpg', title: 'Портрет 21'},
+            { src: './22.jpg', title: 'Портрет 22'},
+            { src: './23.jpg', title: 'Портрет 23'},
+            { src: './24.jpg', title: 'Портрет 24'},
+            { src: './25.jpg', title: 'Портрет 25'},
+            { src: './26.jpg', title: 'Портрет 26'},
+            { src: './27.jpg', title: 'Портрет 27'},
+        ];
+
+        // Populate gallery
+        const galleryContainer = document.getElementById('gallery');
+        galleryImages.forEach((image, index) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `
+                <img src="${image.src}" alt="${image.title}" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>${image.title}</h3>
+                </div>
+            `;
+            galleryItem.addEventListener('click', () => openModal(image.src));
+            galleryContainer.appendChild(galleryItem);
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        function openModal(src) {
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in-up elements
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Phone number click tracking (for analytics)
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', () => {
+                // You can add analytics tracking here
+                console.log('Phone number clicked');
+            });
+        });
+
+        // WhatsApp link tracking
+        document.querySelectorAll('a[href^="https://wa.me/"]').forEach(link => {
+            link.addEventListener('click', () => {
+                // You can add analytics tracking here
+                console.log('WhatsApp link clicked');
+            });
+        });
+    </script>
+</body>
+</html>
