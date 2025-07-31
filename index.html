@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анна Новикова - Портреты на заказ | Подарите эмоции, а не вещь</title>
+    <meta name="description" content="Подарите вечную память - портрет по фото от художника Анны. Реалистичные эмоции маслом, акварелью или карандашом. Запечатлейте близких в искусстве! Узнайте стоимость: +7 (952) 938-86-19">
+    <title>Портрет на заказ от художника Анны | Карандаш, масло, акварель | Уникальный подарок</title>
+    <meta property="og:title" content="Ручные портреты на заказ - художник Анна">
+    <meta property="og:description" content="Превратите фото в эксклюзивный портрет маслом, акварелью или карандашом">
+    <meta property="og:image" content="https://annyportrait.vercel.app/path-to-your-best-work.jpg">
+    <link rel="canonical" href="https://annyportrait.vercel.app/">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
             margin: 0;
@@ -86,9 +92,9 @@
             color: #fff;
             text-shadow: 0 2px 8px rgba(0,0,0,0.18);
             -webkit-text-stroke: 1px #111;
-            text-stroke: 1px #111;
+            /* text-stroke: 1px #111; */
             -webkit-text-fill-color: #fff;
-            text-fill-color: #fff;
+            /* text-fill-color: #fff; */
             background: none;
             -webkit-background-clip: initial;
             background-clip: initial;
@@ -474,6 +480,72 @@
                 transform: translateY(-100px) rotate(360deg);
             }
         }
+        .artist-photo-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0 30px 0;
+        }
+        .artist-photo {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.18), 0 1.5px 8px rgba(0,0,0,0.10);
+            border: 6px solid #fffbe7;
+            background: #fffbe7;
+        }
+        @media (max-width: 600px) {
+            .artist-photo {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        .exclusive-block-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 48px 0 32px 0;
+            gap: 32px;
+        }
+        .exclusive-block {
+            background: rgba(255,255,255,0.97);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 32px 38px;
+            text-align: center;
+            max-width: 480px;
+            z-index: 2;
+            position: relative;
+        }
+        .exclusive-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fc5c7d;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .exclusive-text {
+            font-size: 1.15rem;
+            color: #222;
+            font-weight: 400;
+        }
+        .exclusive-anim {
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        @media (max-width: 800px) {
+            .exclusive-block-wrapper {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .exclusive-anim {
+                min-width: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -535,15 +607,13 @@
         <div class="container">
             <div class="about-content fade-in-up">
                 <div class="about-text">
-                    <h2 class="section-title">Анна Новикова — Ваш мастер живого искусства</h2>
+                    <h2 class="section-title">Анна Новикова — ваш мастер живого искусства</h2>
                     <p>Меня зовут Анна Новикова, я профессиональный художник-портретист. С 2009 года, после окончания Института искусств НГПУ по специализации "рисунок и живопись", я помогаю людям выражать свою любовь, уважение и память через <strong>живое искусство портрета</strong>.</p>
                     <p>Кисть дышит жизнью, и эту жизнь я стараюсь добавлять в каждую работу. Каждый портрет — это не просто изображение, а история, эмоция, момент, застывший в вечности...</p>
                 </div>
-                <div class="about-image">
-                    <div>
-                        <div style="font-size: 2rem; margin-bottom: 10px;">🎨</div>
-                        <div>Диплом НГПУ<br>Специализация:<br>Рисунок и живопись<br>2009 год</div>
-                    </div>
+                <!-- Вместо блока с дипломом -->
+                <div class="artist-photo-block">
+                    <img src="./Ann.jpg" alt="Анна Новикова - художник" class="artist-photo" />
                 </div>
             </div>
         </div>
@@ -563,17 +633,40 @@
                     <div class="benefit-card">
                         <div class="benefit-icon">🎨</div>
                         <h3 class="benefit-title">Выбор Техники</h3>
-                        <p>Тонкая графика карандаша, нежная дымка пастели, легкая акварель или сочная глубина классического масла — выбирайте!</p>
+                        <p>Тонкая графика карандаша, нежная дымка пастели, легкая акварель или сочная глубина классического масла — выбирайте! Также сделайте выбор между портретом и шаржем!</p>
                     </div>
                     <div class="benefit-card">
                         <div class="benefit-icon">🎁</div>
-                        <h3 class="benefit-title">Подарок "Под Ключ"</h3>
+                        <h3 class="benefit-title">Подарок "Под ключ"</h3>
                         <p>От идеи до готового шедевра. Я беру на себя все технические вопросы. Вам нужно только вдохновение и фото.</p>
                     </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🖼️</div>
-                        <h3 class="benefit-title">Эксклюзивность</h3>
-                        <p>Это единственный в мире, созданный вручную шедевр, который станет фамильной ценностью через поколения.</p>
+                </div>
+                <!-- Центральный эксклюзивный блок -->
+                <div class="exclusive-block-wrapper">
+                    <div class="exclusive-anim exclusive-anim-left">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                            <circle cx="30" cy="30" r="10" fill="#ffe066">
+                                <animate attributeName="r" values="10;14;10" dur="2.5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="1;0.7;1" dur="2.5s" repeatCount="indefinite" />
+                            </circle>
+                            <polygon points="30,10 33,25 48,25 36,33 40,48 30,39 20,48 24,33 12,25 27,25" fill="#ffd700">
+                                <animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="6s" repeatCount="indefinite" />
+                            </polygon>
+                        </svg>
+                    </div>
+                    <div class="exclusive-block">
+                        <div class="exclusive-title">Эксклюзивность</div>
+                        <div class="exclusive-text">Это единственный в мире созданный вручную шедевр, который станет фамильной ценностью через поколения.</div>
+                    </div>
+                    <div class="exclusive-anim exclusive-anim-right">
+                        <svg width="80" height="60" viewBox="0 0 80 60" fill="none">
+                            <ellipse cx="40" cy="30" rx="28" ry="10" fill="#fc5c7d" fill-opacity="0.4">
+                                <animate attributeName="rx" values="28;36;28" dur="3s" repeatCount="indefinite" />
+                            </ellipse>
+                            <circle cx="65" cy="20" r="6" fill="#6a82fb">
+                                <animate attributeName="r" values="6;10;6" dur="2.2s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -692,7 +785,6 @@
             { src: './24.jpg', title: 'Портрет 24'},
             { src: './25.jpg', title: 'Портрет 25'},
             { src: './26.jpg', title: 'Портрет 26'},
-            { src: './27.jpg', title: 'Портрет 27'},
         ];
 
         // Populate gallery
@@ -703,7 +795,7 @@
             galleryItem.innerHTML = `
                 <img src="${image.src}" alt="${image.title}" loading="lazy">
                 <div class="gallery-overlay">
-                    <h3>${image.title}</h3>
+                    <span style="font-size:2.5rem;display:block;text-align:center;">😍</span>
                 </div>
             `;
             galleryItem.addEventListener('click', () => openModal(image.src));
